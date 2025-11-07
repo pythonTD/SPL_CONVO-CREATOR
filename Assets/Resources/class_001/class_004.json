@@ -1,0 +1,740 @@
+{
+  "key": 272492767,
+  "name": "",
+  "Lessons": [
+    {
+      "key": 1222911559,
+      "name": "Python Getting Started",
+      "pages": [
+        {
+          "key": -1413366113,
+          "name": "Python Install",
+          "elements": [
+            {
+              "key": 493133030,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": true,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 32,
+                "text_content": "Python Install"
+              }
+            },
+            {
+              "key": -1758965907,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Many PCs and Macs will have python already installed."
+              }
+            },
+            {
+              "key": 250716870,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "To check if you have python installed on a Windows PC, search in the start bar for Python or run the following on the Command Line (cmd.exe):"
+              }
+            },
+            {
+              "key": -1136526849,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "C:\\Users\\Your Name\u003Epython --version",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": 1236352932,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "To check if you have python installed on a Linux or Mac, then on linux open the command line or on Mac open the Terminal and type:"
+              }
+            },
+            {
+              "key": 825220417,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "python --version",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": -1154961417,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "If you find that you do not have Python installed on your computer, then you can download it for free from the following website: \u003Ccolor=blue\u003E\u003Cu\u003Ehttps://www.python.org/\u003C/u\u003E\u003C/color\u003E"
+              }
+            },
+            {
+              "key": 2100431378,
+              "type": 51721585,
+              "content": {
+                "ai_model": 1897049,
+                "writter_effect": false,
+                "page_context": false,
+                "tts": false,
+                "submit": false,
+                "message_system": "",
+                "message_user": ""
+              }
+            }
+          ]
+        },
+        {
+          "key": 214250597,
+          "name": "Python Quickstart",
+          "elements": [
+            {
+              "key": 168271990,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": true,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 32,
+                "text_content": "Python Quickstart"
+              }
+            },
+            {
+              "key": 799095761,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Python is an interpreted programming language, this means that as a developer you write Python (.py) files in a text editor and then put those files into the python interpreter to be executed."
+              }
+            },
+            {
+              "key": 1945695379,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "The way to run a python file is like this on the command line:"
+              }
+            },
+            {
+              "key": 2013802434,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "C:\\Users\\Your Name\u003Epython helloworld.py",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": -2015001967,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Where \u0022helloworld.py\u0022 is the name of your python file."
+              }
+            },
+            {
+              "key": 596380354,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Let\u0027s write our first Python file, called helloworld.py, which can be done in any text editor."
+              }
+            },
+            {
+              "key": -409693434,
+              "type": 1254542888,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_title": "helloworld.py",
+                "text_content": "print(\u0022Hello, World!\u0022)",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": 1470822935,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Simple as that. Save your file. Open your command line, navigate to the directory where you saved your file, and run:"
+              }
+            },
+            {
+              "key": -327040213,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "C:\\Users\\Your Name\u003Epython helloworld.py",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": -219758207,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "The output should read:"
+              }
+            },
+            {
+              "key": -476956073,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "Hello, World!",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": 803590111,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Congratulations, you have written and executed your first Python program."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": -1475171846,
+      "name": "Python Syntax",
+      "pages": [
+        {
+          "key": -1493954,
+          "name": "Execute Python Syntax",
+          "elements": [
+            {
+              "key": -511927185,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": true,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 32,
+                "text_content": "Execute Python Syntax"
+              }
+            },
+            {
+              "key": 558046421,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "As we learned in the previous page, Python syntax can be executed by writing directly in the Command Line:"
+              }
+            },
+            {
+              "key": 1531402621,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "\u003E\u003E\u003E print(\u0022Hello, World!\u0022)\r\nHello, World!",
+                "lines_enabled": false
+              }
+            },
+            {
+              "key": -1960303154,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Or by creating a python file on the server, using the .py file extension, and running it in the Command Line:"
+              }
+            },
+            {
+              "key": 1404507683,
+              "type": 813157805,
+              "content": {
+                "spacing": {
+                  "left": 6,
+                  "right": 6,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "text_content": "C:\\Users\\Your Name\u003Epython myfile.py",
+                "lines_enabled": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Quizzes": [
+    {
+      "key": -1179021290,
+      "name": "xcvb",
+      "pages": [
+        {
+          "key": -1354925346,
+          "name": "",
+          "elements": [
+            {
+              "key": 1477737691,
+              "type": 181698377,
+              "content": {
+                "submit_points": 0,
+                "question": {
+                  "alignment_horizontal": 1,
+                  "color_hex": "#000000",
+                  "bold_enabled": false,
+                  "italic_enabled": false,
+                  "underline_enabled": false,
+                  "font_size": 20,
+                  "text_content": "What is the correct file extension for Python files?",
+                  "spacing": {
+                    "left": 15,
+                    "right": 15,
+                    "top": 180,
+                    "bottom": 6
+                  }
+                },
+                "options": {
+                  "shuffle_enabled": true,
+                  "option_correct": 1644481880,
+                  "list": [
+                    {
+                      "key": 1644481880,
+                      "text": ".py"
+                    },
+                    {
+                      "key": -2107465663,
+                      "text": ".pp"
+                    },
+                    {
+                      "key": 242933260,
+                      "text": ".pt"
+                    },
+                    {
+                      "key": -1328991126,
+                      "text": ".pyth"
+                    }
+                  ],
+                  "spacing": {
+                    "left": 190,
+                    "right": 190,
+                    "top": 10,
+                    "bottom": 10
+                  }
+                }
+              }
+            },
+            {
+              "key": -983282751,
+              "type": 51721585,
+              "content": {
+                "ai_model": 1897049,
+                "writter_effect": false,
+                "page_context": true,
+                "tts": false,
+                "submit": true,
+                "message_system": "",
+                "message_user": "Tell me a little about this."
+              }
+            },
+            {
+              "key": 1355092323,
+              "type": -428893296,
+              "content": {
+                "alignment_horizontal": 0,
+                "color_hex": "#000000",
+                "spacing": {
+                  "left": 15,
+                  "right": 15,
+                  "top": 6,
+                  "bottom": 6
+                },
+                "bold_enabled": false,
+                "italic_enabled": false,
+                "underline_enabled": false,
+                "font_size": 18,
+                "text_content": "Text element..."
+              }
+            },
+            {
+              "key": 666617563,
+              "type": 227252196,
+              "content": {
+                "writter_effect": false,
+                "submit": true,
+                "text": "The correct file extension for Python files is .py. This extension tells the operating system and text editors that the file contains Python source code. "
+              }
+            }
+          ]
+        },
+        {
+          "key": 1706570930,
+          "name": "",
+          "elements": [
+            {
+              "key": -1914720602,
+              "type": 181698377,
+              "content": {
+                "submit_points": 0,
+                "question": {
+                  "alignment_horizontal": 1,
+                  "color_hex": "#000000",
+                  "bold_enabled": false,
+                  "italic_enabled": false,
+                  "underline_enabled": false,
+                  "font_size": 20,
+                  "text_content": "What is a correct command line syntax for checking if python is installed on your computer?\n(And also to check the Python version)",
+                  "spacing": {
+                    "left": 15,
+                    "right": 15,
+                    "top": 180,
+                    "bottom": 6
+                  }
+                },
+                "options": {
+                  "shuffle_enabled": true,
+                  "option_correct": 258511744,
+                  "list": [
+                    {
+                      "key": 281653337,
+                      "text": "python --info"
+                    },
+                    {
+                      "key": 2138208621,
+                      "text": "python --check"
+                    },
+                    {
+                      "key": -2143212530,
+                      "text": "python version"
+                    },
+                    {
+                      "key": -266171756,
+                      "text": "python ##version"
+                    },
+                    {
+                      "key": 258511744,
+                      "text": "python --version"
+                    },
+                    {
+                      "key": 2007541853,
+                      "text": "python -v"
+                    }
+                  ],
+                  "spacing": {
+                    "left": 190,
+                    "right": 190,
+                    "top": 10,
+                    "bottom": 10
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": 1350669770,
+          "name": "",
+          "elements": [
+            {
+              "key": 1939073682,
+              "type": 181698377,
+              "content": {
+                "submit_points": 0,
+                "question": {
+                  "alignment_horizontal": 1,
+                  "color_hex": "#000000",
+                  "bold_enabled": false,
+                  "italic_enabled": false,
+                  "underline_enabled": false,
+                  "font_size": 20,
+                  "text_content": "What is a correct command line syntax for checking if python is installed on your computer?\n(And also to check the Python version)",
+                  "spacing": {
+                    "left": 15,
+                    "right": 15,
+                    "top": 180,
+                    "bottom": 6
+                  }
+                },
+                "options": {
+                  "shuffle_enabled": true,
+                  "option_correct": 1592911138,
+                  "list": [
+                    {
+                      "key": -566952295,
+                      "text": "python --info"
+                    },
+                    {
+                      "key": -1909824640,
+                      "text": "python --check"
+                    },
+                    {
+                      "key": -1822009027,
+                      "text": "python version"
+                    },
+                    {
+                      "key": -644830456,
+                      "text": "python ##version"
+                    },
+                    {
+                      "key": 1592911138,
+                      "text": "python --version"
+                    },
+                    {
+                      "key": -155876465,
+                      "text": "python -v"
+                    }
+                  ],
+                  "spacing": {
+                    "left": 190,
+                    "right": 190,
+                    "top": 10,
+                    "bottom": 10
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "page_result": {
+        "key": 0,
+        "name": "",
+        "elements": [
+          {
+            "key": 1276153885,
+            "type": -1479532188,
+            "content": {}
+          },
+          {
+            "key": -202593898,
+            "type": -428893296,
+            "content": {
+              "alignment_horizontal": 0,
+              "color_hex": "#000000",
+              "spacing": {
+                "left": 15,
+                "right": 15,
+                "top": 6,
+                "bottom": 6
+              },
+              "bold_enabled": false,
+              "italic_enabled": false,
+              "underline_enabled": false,
+              "font_size": 18,
+              "text_content": "Text element..."
+            }
+          }
+        ]
+      },
+      "page_answers": {
+        "key": 0,
+        "name": "",
+        "elements": [
+          {
+            "key": -1518277680,
+            "type": 128397823,
+            "content": {}
+          }
+        ]
+      }
+    }
+  ]
+}
