@@ -138,7 +138,16 @@ public class UIPage
                   break;
                 }
               case Creator.Element.TYPE.CHALLENGE_INPUT_NORMAL:
-                break;
+                {
+                  if (ManagerApp.quiz_selected == null) break;
+                  var sibling_index = predict_closest_trfm.GetSiblingIndex();
+                  var element = new Creator.Element.CHALLENGE_INPUT_NORMAL();
+                  list_elements.Insert(sibling_index, element);
+                  GameData.Save_All();
+                  Update_All();
+                  break;
+                }
+             
               case Creator.Element.TYPE.GENERAL_WARNING:
                 {
                   var sibling_index = predict_closest_trfm.GetSiblingIndex();
@@ -637,87 +646,19 @@ public class UIPage
             }
           case Creator.Element.TYPE.CHALLENGE_INPUT_NORMAL:
             {
-              // var trfm_inst = GameObject.Instantiate(ELEMENTS.CHALLENGE_INPUT_NORMAL, content_parent).transform;
-              // trfm_inst.gameObject.SetActive(true);
-              // trfm_inst.name = element_base.key.ToString();
-              // var content = (Creator.Element.CHALLENGE_INPUT_NORMAL)element_base.content;
-              // // question
-              // {
-              //   var text_field = trfm_inst.Find("question/text").GetComponent<TMP_Text>();
-              //   // alignment horizontal
-              //   {
-              //     switch (content.question.alignment_horizontal)
-              //     {
-              //       case Creator.Element.ALIGNMENT_HORIZONTAL.LEFT:
-              //         text_field.horizontalAlignment = HorizontalAlignmentOptions.Left;
-              //         break;
-              //       case Creator.Element.ALIGNMENT_HORIZONTAL.CENTER:
-              //         text_field.horizontalAlignment = HorizontalAlignmentOptions.Center;
-              //         break;
-              //       case Creator.Element.ALIGNMENT_HORIZONTAL.RIGHT:
-              //         text_field.horizontalAlignment = HorizontalAlignmentOptions.Right;
-              //         break;
-              //     }
-              //   }
-              //   // margin
-              //   {
-              //     var layout = trfm_inst.GetComponent<HorizontalOrVerticalLayoutGroup>();
-              //     layout.padding.left = content.question.spacing.left;
-              //     layout.padding.right = content.question.spacing.right;
-              //     layout.padding.top = content.question.spacing.top;
-              //     layout.padding.bottom = content.question.spacing.bottom;
-              //   }
-              //   // color
-              //   {
-              //     ColorUtility.TryParseHtmlString(content.question.color_hex, out var color);
-              //     text_field.color = color;
-              //   }
-              //   // font size
-              //   {
-              //     text_field.fontSize = content.question.font_size;
-              //   }
-              //   // text content
-              //   {
-              //     text_field.text = content.question.text_content;
-              //   }
-              //   // style
-              //   {
-              //     var style = FontStyles.Normal;
-              //     if (content.question.bold_enabled)
-              //       style |= FontStyles.Bold;
-              //     if (content.question.italic_enabled)
-              //       style |= FontStyles.Italic;
-              //     if (content.question.underline_enabled)
-              //       style |= FontStyles.Underline;
-              //     text_field.fontStyle = style;
-              //   }
-              // }
-              // // input field
-              // {
-              //   // margin
-              //   {
-              //     var layout = trfm_inst.Find("input").GetComponent<HorizontalOrVerticalLayoutGroup>();
-              //     layout.padding.left = content.input_field.spacing.left;
-              //     layout.padding.right = content.input_field.spacing.right;
-              //     layout.padding.top = content.input_field.spacing.top;
-              //     layout.padding.bottom = content.input_field.spacing.bottom;
-              //   }
-              //   // height
-              //   {
-              //     var layout = trfm_inst.Find("input/field").GetComponent<LayoutElement>();
-              //     layout.preferredHeight = content.input_field.height;
-              //   }
-              // }
-              // // events
-              // {
-              //   var button = trfm_inst.GetComponent<ButtonC>();
-              //   button.onClick.AddListener(() =>
-              //   {
-              //     ManagerApp.Select_Element(element_base);
-              //     UIScene.Instance.tools_right.Update_All();
-              //     select_frame();
-              //   });
-              // }
+              var element = (Creator.Element.CHALLENGE_INPUT_NORMAL)element_base;
+              var trfm_inst = GameObject.Instantiate(ELEMENTS.CHALLENGE_INPUT_NORMAL, content_parent).transform;
+              trfm_inst.gameObject.SetActive(true);
+              trfm_inst.name = element_base.key.ToString();
+              element.Insert_In_Page(trfm_inst);
+              
+              var button = trfm_inst.GetComponent<ButtonC>();
+              button.onClick.AddListener(() =>
+              {
+                ManagerApp.Select_Element(element);
+                UIScene.Instance.tools_right.Update_All();
+                update_frame_selector();
+              });
               break;
             }
           case Creator.Element.TYPE.GENERAL_WARNING:

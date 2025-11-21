@@ -963,7 +963,299 @@ public class UIToolsRight
               break;
             }
           case Creator.Element.TYPE.CHALLENGE_INPUT_NORMAL:
+          {
+            var element = (Creator.Element.CHALLENGE_INPUT_NORMAL)element_base;
+            var trfm_inst = scroll_rect.content.Find("CHALLENGE_INPUT_NORMAL");
+            trfm_inst.gameObject.SetActive(true);
+            bar_trfm.Find("CHALLENGE_INPUT_NORMAL").gameObject.SetActive(true);
+            update_bar(bar_trfm.Find("CHALLENGE_INPUT_NORMAL/bar"));
+            var trfm_question = trfm_inst.Find("question");
+            var trfm_content = trfm_inst.Find("content");
+            #region + question 
+            {
+              // text content
+              {
+                var input = trfm_question.Find("text_input").GetComponent<TMP_InputField>();
+                input.text = element.question.text_content;
+                input.onEndEdit.RemoveAllListeners();
+                input.onEndEdit.AddListener((value) =>
+                {
+                  element.question.text_content = value;
+                  GameData.invoke_on_class_current_updated();
+                });
+              }
+              // font color
+              {
+                ColorUtility.TryParseHtmlString(element.question.color_hex, out var color_current);
+                trfm_question.Find("color/frame").GetComponent<Image>().color = color_current;
+                var button = trfm_question.Find("color").GetComponent<Button>();
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() =>
+                {
+                  UIScene.Instance.color_picker.Show(
+                    color_current,
+                    (value) =>
+                    {
+                      element.question.color_hex = $"#{value}";
+                      GameData.invoke_on_class_current_updated();
+                      UIScene.Instance.color_picker.Hide();
+                    },
+                    () =>
+                    {
+                      UIScene.Instance.color_picker.Hide();
+                    }
+                  );
+                  GameData.invoke_on_class_current_updated();
+                });
+                // tooltip
+                {
+                  var tooltip_data = new UITooltips.GUI_001.DATA();
+                  {
+                    tooltip_data.game_object = button.gameObject;
+                    tooltip_data.transform_position = button.transform;
+                    tooltip_data.text = $"Color";
+                    tooltip_data.anchor = TextAnchor.LowerCenter;
+                    tooltip_data.spacing = new(0, 20);
+                  }
+                  UITooltips.GUI_001.AddListener(tooltip_data);
+                }
+              }
+              // font size
+              {
+                var input = trfm_question.Find("font_size/input").GetComponent<TMP_InputField>();
+                input.text = element.question.font_size.ToString();
+                input.onEndEdit.RemoveAllListeners();
+                input.onEndEdit.AddListener((value) =>
+                {
+                  element.question.font_size = int.Parse(value);
+                  GameData.invoke_on_class_current_updated();
+                });
+                var button_up = trfm_question.Find("font_size/up").GetComponent<Button>();
+                button_up.onClick.RemoveAllListeners();
+                button_up.onClick.AddListener(() =>
+                {
+                  element.question.font_size += 1;
+                  GameData.invoke_on_class_current_updated();
+                });
+                var button_down = trfm_question.Find("font_size/down").GetComponent<Button>();
+                button_down.onClick.RemoveAllListeners();
+                button_down.onClick.AddListener(() =>
+                {
+                  element.question.font_size = Mathf.Max(0, element.question.font_size - 1);
+                  GameData.invoke_on_class_current_updated();
+                });
+              }
+              // font format
+              {
+                // bold
+                {
+                  var button = trfm_question.Find("font_format/bold").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.bold_enabled
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.bold_enabled = !element.question.bold_enabled;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Bold";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+                // italic
+                {
+                  var button = trfm_question.Find("font_format/italic").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.italic_enabled
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.italic_enabled = !element.question.italic_enabled;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Italic";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+                // underline
+                {
+                  var button = trfm_question.Find("font_format/underline").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.underline_enabled
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.underline_enabled = !element.question.underline_enabled;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Underline";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+              }
+              // align horizontal
+              {
+                // left
+                {
+                  var aligment = Creator.Element.ALIGNMENT_HORIZONTAL.LEFT;
+                  var button = trfm_question.Find("align_horizontal/left").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.alignment_horizontal == aligment
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.alignment_horizontal = aligment;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Left";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+                // center
+                {
+                  var aligment = Creator.Element.ALIGNMENT_HORIZONTAL.CENTER;
+                  var button = trfm_question.Find("align_horizontal/center").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.alignment_horizontal == aligment
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.alignment_horizontal = aligment;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Center";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+                // right
+                {
+                  var aligment = Creator.Element.ALIGNMENT_HORIZONTAL.RIGHT;
+                  var button = trfm_question.Find("align_horizontal/right").GetComponent<ButtonC>();
+                  button.SetSkinByName(
+                    element.question.alignment_horizontal == aligment
+                    ? "toggle_on"
+                    : "toggle_off"
+                  );
+                  button.onClick.RemoveAllListeners();
+                  button.onClick.AddListener(() =>
+                  {
+                    element.question.alignment_horizontal = aligment;
+                    GameData.invoke_on_class_current_updated();
+                  });
+                  // tooltip
+                  {
+                    var tooltip_data = new UITooltips.GUI_001.DATA();
+                    {
+                      tooltip_data.game_object = button.gameObject;
+                      tooltip_data.transform_position = button.transform;
+                      tooltip_data.text = $"Right";
+                      tooltip_data.anchor = TextAnchor.LowerCenter;
+                      tooltip_data.spacing = new(0, 20);
+                    }
+                    UITooltips.GUI_001.AddListener(tooltip_data);
+                  }
+                }
+              }
+              // spacing
+              {
+                update_spacing(trfm_question.Find("spacing"), element.question.spacing);
+              }
+            }
+            #endregion
+            #region  + content(INPUT_FIELD)
+            //Height
+            {
+              var input = trfm_content.Find("height/input").GetComponent<TMP_InputField>();
+              input.text = element.input_field.height.ToString();
+              input.onEndEdit.RemoveAllListeners();
+              input.onEndEdit.AddListener((value) =>
+              {
+                element.input_field.height = int.Parse(value);
+                GameData.invoke_on_class_current_updated();
+              });
+              var button_up = trfm_content.Find("height/up").GetComponent<ButtonC>();
+              button_up.onClick.RemoveAllListeners();
+              button_up.onClick.AddListener(() =>
+              {
+                element.input_field.height += 1;
+                GameData.invoke_on_class_current_updated();
+              });
+              var button_down = trfm_content.Find("height/down").GetComponent<ButtonC>();
+              button_down.onClick.RemoveAllListeners();
+              button_down.onClick.AddListener(() =>
+              {
+                element.input_field.height = Mathf.Max(0, element.input_field.height - 1);
+                GameData.invoke_on_class_current_updated();
+              });
+            }
+            
+            //Spacing
+            {
+              update_spacing(trfm_content.Find("spacing"), element.input_field.spacing);
+            }
+            #endregion
             break;
+          }
           case Creator.Element.TYPE.GENERAL_WARNING:
             {
               var element = (Creator.Element.GENERAL_WARNING)element_base;

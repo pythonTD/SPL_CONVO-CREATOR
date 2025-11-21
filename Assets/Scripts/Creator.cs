@@ -29,6 +29,7 @@ namespace Creator
   [JsonDerivedType(typeof(SYSTEM_QUIZ_RESULT), typeDiscriminator: "Element.SYSTEM_QUIZ_RESULT")]
   [JsonDerivedType(typeof(SYSTEM_QUIZZES_MENU), typeDiscriminator: "Element.SYSTEM_QUIZ_MENU")]
   [JsonDerivedType(typeof(CHALLENGE_MULTIPLE_CHOICE), typeDiscriminator: "Element.CHALLENGE_MULTIPLE_CHOICE")]
+  [JsonDerivedType(typeof(CHALLENGE_INPUT_NORMAL), typeDiscriminator: "Element.CHALLENGE_INPUT_NORMAL")]
   public class Element
   {
     public int key = 0;
@@ -569,8 +570,12 @@ namespace Creator
         }
       }
     }
-    public class CHALLENGE_INPUT_NORMAL
+    public class CHALLENGE_INPUT_NORMAL : Element
     {
+      public CHALLENGE_INPUT_NORMAL()
+      {
+        type = TYPE.CHALLENGE_INPUT_NORMAL;
+      }
       public int submit_points = 0;
       public QUESTION question = new();
       public INPUT_FIELD input_field = new();
@@ -601,6 +606,86 @@ namespace Creator
           top = 10,
           bottom = 10,
         };
+      }
+      
+      public override string To_Text()
+      {
+        var lines = new List<string> { "Quiz INPUT_NORMAL" };
+        #region question
+        {
+          lines.Add("Question:");
+          lines.Add($"{question.text_content}");
+        }
+        #endregion
+        #region  input field
+        {
+          lines.Add("Input Field:");
+          lines.Add($"{question.text_content}");
+        }
+        #endregion
+        
+        return string.Join("\n", lines.Where(s => !string.IsNullOrWhiteSpace(s)));
+      }
+      public override void Insert_In_Page(Transform trfm_inst)
+      {
+        
+        #region + question
+        var text_field = trfm_inst.Find("question/text").GetComponent<TMP_Text>();
+        // alignment horizontal
+        switch (question.alignment_horizontal)
+        {
+          case ALIGNMENT_HORIZONTAL.LEFT:
+            text_field.horizontalAlignment = HorizontalAlignmentOptions.Left;
+            break;
+          case ALIGNMENT_HORIZONTAL.CENTER:
+            text_field.horizontalAlignment = HorizontalAlignmentOptions.Center;
+            break;
+          case ALIGNMENT_HORIZONTAL.RIGHT:
+            text_field.horizontalAlignment = HorizontalAlignmentOptions.Right;
+            break;
+        }
+        
+        // margin
+        var layout = trfm_inst.Find("question").GetComponent<HorizontalOrVerticalLayoutGroup>();
+        layout.padding.left = question.spacing.left;
+        layout.padding.right = question.spacing.right;
+        layout.padding.top = question.spacing.top;
+        layout.padding.bottom = question.spacing.bottom;
+      
+        // color
+        ColorUtility.TryParseHtmlString(question.color_hex, out var color);
+        text_field.color = color;
+      
+        // font size
+        text_field.fontSize = question.font_size;
+        
+        // text content
+        text_field.text = question.text_content;
+        
+        // style
+        var style = FontStyles.Normal;
+        if (question.bold_enabled)
+          style |= FontStyles.Bold;
+        if (question.italic_enabled)
+          style |= FontStyles.Italic;
+        if (question.underline_enabled)
+          style |= FontStyles.Underline;
+        text_field.fontStyle = style;
+        #endregion
+
+        #region + input field
+        // height
+        var field = trfm_inst.Find("input/field").GetComponent<LayoutElement>();
+        
+        field.preferredHeight = input_field.height;
+        
+        // spacing
+        var input = trfm_inst.Find("input").GetComponent<HorizontalOrVerticalLayoutGroup>();
+        input.padding.left = input_field.spacing.left;
+        input.padding.right = input_field.spacing.right;
+        input.padding.top = input_field.spacing.top;
+        input.padding.bottom = input_field.spacing.bottom;
+        #endregion
       }
     }
     public class AI_PROMPT

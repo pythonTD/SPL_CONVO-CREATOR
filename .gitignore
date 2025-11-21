@@ -3,3 +3,5 @@
 *.csproj
 /UserSettings
 *.sln
+/obj
+/.idea
