@@ -579,6 +579,8 @@ namespace Creator
       public int submit_points = 0;
       public QUESTION question = new();
       public INPUT_FIELD input_field = new();
+      public bool displayECAs = true;
+
       public class QUESTION
       {
         public ALIGNMENT_HORIZONTAL alignment_horizontal = ALIGNMENT_HORIZONTAL.CENTER;

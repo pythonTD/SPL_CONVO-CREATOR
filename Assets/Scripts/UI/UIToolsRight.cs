@@ -971,6 +971,7 @@ public class UIToolsRight
             update_bar(bar_trfm.Find("CHALLENGE_INPUT_NORMAL/bar"));
             var trfm_question = trfm_inst.Find("question");
             var trfm_content = trfm_inst.Find("content");
+            var trfm_display_ECAs = trfm_inst.Find("toggle_ECAs");
             #region + question 
             {
               // text content
@@ -1252,6 +1253,25 @@ public class UIToolsRight
             //Spacing
             {
               update_spacing(trfm_content.Find("spacing"), element.input_field.spacing);
+            }
+            #endregion
+
+            #region + displayECAs
+            {
+              var localElement = element; 
+
+              Toggle toggle_on = trfm_display_ECAs.Find("toggles/toggle_on").GetComponent<Toggle>();
+              Toggle toggle_off = trfm_display_ECAs.Find("toggles/toggle_off").GetComponent<Toggle>();
+              toggle_on.SetIsOnWithoutNotify(element.displayECAs);
+              toggle_off.SetIsOnWithoutNotify(!element.displayECAs);
+                
+              toggle_on.onValueChanged.RemoveAllListeners();
+              toggle_on.onValueChanged.AddListener(isOn =>
+              {
+                if (element.displayECAs == isOn) { return; } 
+                element.displayECAs = isOn;
+                GameData.invoke_on_class_current_updated();
+              });
             }
             #endregion
             break;
