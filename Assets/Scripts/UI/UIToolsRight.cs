@@ -513,6 +513,7 @@ public class UIToolsRight
               var trfm_question = trfm_inst.Find("question");
               var trfm_options = trfm_inst.Find("options");
               var trfm_display_ECAs = trfm_inst.Find("toggle_ECAs");
+              var trfm_display_verbosity = trfm_inst.Find("toggle_verbosity");
               // points
               {
                 var input = trfm_inst.Find("score/amount/input").GetComponent<TMP_InputField>();
@@ -960,6 +961,24 @@ public class UIToolsRight
                   GameData.invoke_on_class_current_updated();
                 });
               }
+              //display Verbosity
+              if (trfm_display_verbosity != null)
+              {
+                var localElement = element; 
+
+                Toggle toggle_on = trfm_display_verbosity.Find("toggles/toggle_on").GetComponent<Toggle>();
+                Toggle toggle_off = trfm_display_verbosity.Find("toggles/toggle_off").GetComponent<Toggle>();
+                toggle_on.SetIsOnWithoutNotify(element.Verbosity);
+                toggle_off.SetIsOnWithoutNotify(!element.Verbosity);
+                
+                toggle_on.onValueChanged.RemoveAllListeners();
+                toggle_on.onValueChanged.AddListener(isOn =>
+                {
+                  if (element.Verbosity == isOn) { return; } 
+                  element.Verbosity = isOn;
+                  GameData.invoke_on_class_current_updated();
+                });
+              }
               break;
             }
           case Creator.Element.TYPE.CHALLENGE_INPUT_NORMAL:
@@ -972,6 +991,7 @@ public class UIToolsRight
             var trfm_question = trfm_inst.Find("question");
             var trfm_content = trfm_inst.Find("content");
             var trfm_display_ECAs = trfm_inst.Find("toggle_ECAs");
+            var trfm_display_verbosity = trfm_inst.Find("toggle_verbosity");
             #region + question 
             {
               // text content
@@ -1270,6 +1290,26 @@ public class UIToolsRight
               {
                 if (element.displayECAs == isOn) { return; } 
                 element.displayECAs = isOn;
+                GameData.invoke_on_class_current_updated();
+              });
+            }
+            #endregion
+
+            #region + Verbosity
+            if (trfm_display_verbosity != null)
+            {
+              var localElement = element; 
+
+              Toggle toggle_on = trfm_display_verbosity.Find("toggles/toggle_on").GetComponent<Toggle>();
+              Toggle toggle_off = trfm_display_verbosity.Find("toggles/toggle_off").GetComponent<Toggle>();
+              toggle_on.SetIsOnWithoutNotify(element.Verbosity);
+              toggle_off.SetIsOnWithoutNotify(!element.Verbosity);
+                
+              toggle_on.onValueChanged.RemoveAllListeners();
+              toggle_on.onValueChanged.AddListener(isOn =>
+              {
+                if (element.Verbosity == isOn) { return; } 
+                element.Verbosity = isOn;
                 GameData.invoke_on_class_current_updated();
               });
             }
