@@ -436,7 +436,52 @@ public class UIToolsRight
               break;
             }
           case Creator.Element.TYPE.GENERAL_IMAGE:
-            break;
+            {
+              var element = (Creator.Element.GENERAL_IMAGE)element_base;
+              // Reuse GENERAL_CODE_SCRIPT template for now (has text input for URL)
+              var trfm_inst = scroll_rect.content.Find("GENERAL_CODE_SCRIPT");
+              var trfm_content = trfm_inst.Find("content");
+              trfm_inst.gameObject.SetActive(true);
+              bar_trfm.Find("GENERAL_CODE_SCRIPT").gameObject.SetActive(true);
+              update_bar(bar_trfm.Find("GENERAL_CODE_SCRIPT/bar"));
+              // Change title from "Code Script" to "Image"
+              var title_text = bar_trfm.Find("GENERAL_CODE_SCRIPT/bar/title")?.GetComponent<TMP_Text>();
+              if (title_text != null) title_text.text = "Image";
+              // hide lines toggle (not needed for image)
+              trfm_content.Find("lines")?.gameObject.SetActive(false);
+              // URL input (reuse title_input)
+              {
+                var input = trfm_content.Find("title_input").GetComponent<TMP_InputField>();
+                input.text = element.image_url;
+                input.onEndEdit.RemoveAllListeners();
+                input.onEndEdit.AddListener((value) =>
+                {
+                  element.image_url = value;
+                  GameData.invoke_on_class_current_updated();
+                });
+              }
+              // size input (reuse text_input for max dimensions as "WIDTHxHEIGHT")
+              {
+                var input = trfm_content.Find("text_input").GetComponent<TMP_InputField>();
+                input.text = $"{element.max_width}x{element.max_height}";
+                input.onEndEdit.RemoveAllListeners();
+                input.onEndEdit.AddListener((value) =>
+                {
+                  var parts = value.Split('x');
+                  if (parts.Length == 2 && float.TryParse(parts[0], out var w) && float.TryParse(parts[1], out var h))
+                  {
+                    element.max_width = w;
+                    element.max_height = h;
+                  }
+                  GameData.invoke_on_class_current_updated();
+                });
+              }
+              // spacing
+              {
+                update_spacing(trfm_content.Find("spacing"), element.spacing);
+              }
+              break;
+            }
           case Creator.Element.TYPE.GENERAL_TTS:
             break;
           case Creator.Element.TYPE.GENERAL_CODE_SCRIPT:
@@ -447,6 +492,9 @@ public class UIToolsRight
               trfm_inst.gameObject.SetActive(true);
               bar_trfm.Find("GENERAL_CODE_SCRIPT").gameObject.SetActive(true);
               update_bar(bar_trfm.Find("GENERAL_CODE_SCRIPT/bar"));
+              // Restore title to "Code Script" (may have been changed by Image element)
+              var title_text = bar_trfm.Find("GENERAL_CODE_SCRIPT/bar/title")?.GetComponent<TMP_Text>();
+              if (title_text != null) title_text.text = "Code Script";
               // lines
               {
                 var button = trfm_content.Find("lines").GetComponent<ButtonC>();

@@ -30,6 +30,7 @@ namespace Creator
   [JsonDerivedType(typeof(SYSTEM_QUIZZES_MENU), typeDiscriminator: "Element.SYSTEM_QUIZ_MENU")]
   [JsonDerivedType(typeof(CHALLENGE_MULTIPLE_CHOICE), typeDiscriminator: "Element.CHALLENGE_MULTIPLE_CHOICE")]
   [JsonDerivedType(typeof(CHALLENGE_INPUT_NORMAL), typeDiscriminator: "Element.CHALLENGE_INPUT_NORMAL")]
+  [JsonDerivedType(typeof(GENERAL_IMAGE), typeDiscriminator: "Element.GENERAL_IMAGE")]
   public class Element
   {
     public int key = 0;
@@ -386,6 +387,61 @@ namespace Creator
             result.AppendLine(num + lines[i]);
           }
           return result.ToString();
+        }
+      }
+    }
+    public class GENERAL_IMAGE : Element
+    {
+      public GENERAL_IMAGE()
+      {
+        type = TYPE.GENERAL_IMAGE;
+      }
+      public SPACING spacing = new()
+      {
+        left = 15,
+        right = 15,
+        top = 6,
+        bottom = 6,
+      };
+      public string image_url = "";
+      public float max_width = 400;
+      public float max_height = 300;
+      public ALIGNMENT_HORIZONTAL alignment_horizontal = ALIGNMENT_HORIZONTAL.CENTER;
+      public override string To_Text()
+      {
+        return $"[Image: {image_url}]";
+      }
+      public override void Insert_In_Page(Transform trfm_inst)
+      {
+        // margin
+        {
+          var layout = trfm_inst.GetComponent<HorizontalOrVerticalLayoutGroup>();
+          layout.padding.left = spacing.left;
+          layout.padding.right = spacing.right;
+          layout.padding.top = spacing.top;
+          layout.padding.bottom = spacing.bottom;
+        }
+        // alignment
+        {
+          var layout = trfm_inst.GetComponent<HorizontalOrVerticalLayoutGroup>();
+          switch (alignment_horizontal)
+          {
+            case ALIGNMENT_HORIZONTAL.LEFT:
+              layout.childAlignment = TextAnchor.MiddleLeft;
+              break;
+            case ALIGNMENT_HORIZONTAL.CENTER:
+              layout.childAlignment = TextAnchor.MiddleCenter;
+              break;
+            case ALIGNMENT_HORIZONTAL.RIGHT:
+              layout.childAlignment = TextAnchor.MiddleRight;
+              break;
+          }
+        }
+        // size constraints
+        {
+          var layout_element = trfm_inst.Find("image").GetComponent<LayoutElement>();
+          layout_element.preferredWidth = max_width;
+          layout_element.preferredHeight = max_height;
         }
       }
     }

@@ -115,7 +115,14 @@ public class UIPage
                   break;
                 }
               case Creator.Element.TYPE.GENERAL_IMAGE:
-                break;
+                {
+                  var sibling_index = predict_closest_trfm.GetSiblingIndex();
+                  var element = new Creator.Element.GENERAL_IMAGE();
+                  list_elements.Insert(sibling_index, element);
+                  GameData.Save_All();
+                  Update_All();
+                  break;
+                }
               case Creator.Element.TYPE.GENERAL_TTS:
                 break;
               case Creator.Element.TYPE.GENERAL_CODE_SCRIPT:
@@ -454,7 +461,30 @@ public class UIPage
               break;
             }
           case Creator.Element.TYPE.GENERAL_IMAGE:
-            break;
+            {
+              var element = (Creator.Element.GENERAL_IMAGE)element_base;
+              var trfm_inst = GameObject.Instantiate(ELEMENTS.GENERAL_IMAGE, content_parent).transform;
+              trfm_inst.gameObject.SetActive(true);
+              trfm_inst.name = element.key.ToString();
+              element.Insert_In_Page(trfm_inst);
+              // load image from URL
+              if (!string.IsNullOrEmpty(element.image_url))
+              {
+                var rawImage = trfm_inst.Find("image").GetComponent<RawImage>();
+                ImageLoader.LoadImageFromUrl(element.image_url, rawImage, element.max_width, element.max_height);
+              }
+              // events
+              {
+                var button = trfm_inst.GetComponent<ButtonC>();
+                button.onClick.AddListener(() =>
+                {
+                  ManagerApp.Select_Element(element);
+                  UIScene.Instance.tools_right.Update_All();
+                  update_frame_selector();
+                });
+              }
+              break;
+            }
           case Creator.Element.TYPE.GENERAL_CODE_SCRIPT:
             {
               var element = (Creator.Element.GENERAL_CODE_SCRIPT)element_base;
