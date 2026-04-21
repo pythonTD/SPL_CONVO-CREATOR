@@ -467,12 +467,7 @@ public class UIPage
               trfm_inst.gameObject.SetActive(true);
               trfm_inst.name = element.key.ToString();
               element.Insert_In_Page(trfm_inst);
-              // load image from URL
-              if (!string.IsNullOrEmpty(element.image_url))
-              {
-                var rawImage = trfm_inst.Find("image").GetComponent<RawImage>();
-                ImageLoader.LoadImageFromUrl(element.image_url, rawImage, element.max_width, element.max_height);
-              }
+              ImageLoader.Render(element, trfm_inst.Find("image").GetComponent<RawImage>());
               // events
               {
                 var button = trfm_inst.GetComponent<ButtonC>();

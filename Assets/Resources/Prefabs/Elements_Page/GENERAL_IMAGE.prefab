@@ -95,8 +95,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ddacab8d285d97d4f8d9a280112aa4b2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &5073944829870745540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -151,7 +151,35 @@ MonoBehaviour:
       m_Calls: []
   cursor_hand_hover: 1
   index_selected: 0
-  skins: []
+  skins:
+  - name: default
+    graphics_color:
+    - colors:
+        m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+        m_HighlightedColor: {r: 0.9607843, g: 0.4, b: 0, a: 0.3254902}
+        m_PressedColor: {r: 0.9607843, g: 0.4, b: 0, a: 0.3254902}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0
+      graphics:
+      - {fileID: 4461801593365747408}
+    graphics_sprite: []
+    graphics_y: []
+  - name: selected
+    graphics_color:
+    - colors:
+        m_NormalColor: {r: 0.9607843, g: 0.4, b: 0, a: 1}
+        m_HighlightedColor: {r: 0.9607843, g: 0.4, b: 0, a: 1}
+        m_PressedColor: {r: 0.9607843, g: 0.4, b: 0, a: 1}
+        m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+        m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+        m_ColorMultiplier: 1
+        m_FadeDuration: 0
+      graphics:
+      - {fileID: 4461801593365747408}
+    graphics_sprite: []
+    graphics_y: []
 --- !u!1 &5461980589921686668
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +247,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ddacab8d285d97d4f8d9a280112aa4b2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -228,7 +256,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &357140594575512353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,14 +291,14 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 600
   m_TargetDisplay: 0
 --- !u!1 &6252265581589223039
 GameObject:

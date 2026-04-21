@@ -449,9 +449,11 @@ public class UIToolsRight
               if (title_text != null) title_text.text = "Image";
               // hide lines toggle (not needed for image)
               trfm_content.Find("lines")?.gameObject.SetActive(false);
+              update_input_label(trfm_content, "Insert URL");
               // URL input (reuse title_input)
               {
                 var input = trfm_content.Find("title_input").GetComponent<TMP_InputField>();
+                update_input_placeholder(input, "Insert URL");
                 input.text = element.image_url;
                 input.onEndEdit.RemoveAllListeners();
                 input.onEndEdit.AddListener((value) =>
@@ -495,6 +497,7 @@ public class UIToolsRight
               // Restore title to "Code Script" (may have been changed by Image element)
               var title_text = bar_trfm.Find("GENERAL_CODE_SCRIPT/bar/title")?.GetComponent<TMP_Text>();
               if (title_text != null) title_text.text = "Code Script";
+              update_input_label(trfm_content, "Script Name");
               // lines
               {
                 var button = trfm_content.Find("lines").GetComponent<ButtonC>();
@@ -525,6 +528,7 @@ public class UIToolsRight
               // title content
               {
                 var input = trfm_content.Find("title_input").GetComponent<TMP_InputField>();
+                update_input_placeholder(input, "Script Name");
                 input.text = element.text_title;
                 input.onEndEdit.RemoveAllListeners();
                 input.onEndEdit.AddListener((value) =>
@@ -2758,6 +2762,18 @@ public class UIToolsRight
           }
         }
       }
+    }
+    private static void update_input_placeholder(TMP_InputField input, string value)
+    {
+      if (input?.placeholder is TMP_Text placeholder)
+        placeholder.text = value;
+    }
+
+    private static void update_input_label(Transform content, string value)
+    {
+      var label = content?.Find("title_")?.GetComponent<TMP_Text>();
+      if (label != null)
+        label.text = value;
     }
   }
 }
