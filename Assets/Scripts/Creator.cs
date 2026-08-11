@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using TMPro;
@@ -665,7 +664,7 @@ namespace Creator
           bottom = 10,
         };
       }
-      
+
       public override string To_Text()
       {
         var lines = new List<string> { "Quiz INPUT_NORMAL" };
@@ -681,12 +680,12 @@ namespace Creator
           lines.Add($"{question.text_content}");
         }
         #endregion
-        
+
         return string.Join("\n", lines.Where(s => !string.IsNullOrWhiteSpace(s)));
       }
       public override void Insert_In_Page(Transform trfm_inst)
       {
-        
+
         #region + question
         var text_field = trfm_inst.Find("question/text").GetComponent<TMP_Text>();
         // alignment horizontal
@@ -702,24 +701,24 @@ namespace Creator
             text_field.horizontalAlignment = HorizontalAlignmentOptions.Right;
             break;
         }
-        
+
         // margin
         var layout = trfm_inst.Find("question").GetComponent<HorizontalOrVerticalLayoutGroup>();
         layout.padding.left = question.spacing.left;
         layout.padding.right = question.spacing.right;
         layout.padding.top = question.spacing.top;
         layout.padding.bottom = question.spacing.bottom;
-      
+
         // color
         ColorUtility.TryParseHtmlString(question.color_hex, out var color);
         text_field.color = color;
-      
+
         // font size
         text_field.fontSize = question.font_size;
-        
+
         // text content
         text_field.text = question.text_content;
-        
+
         // style
         var style = FontStyles.Normal;
         if (question.bold_enabled)
@@ -734,9 +733,9 @@ namespace Creator
         #region + input field
         // height
         var field = trfm_inst.Find("input/field").GetComponent<LayoutElement>();
-        
+
         field.preferredHeight = input_field.height;
-        
+
         // spacing
         var input = trfm_inst.Find("input").GetComponent<HorizontalOrVerticalLayoutGroup>();
         input.padding.left = input_field.spacing.left;
@@ -900,9 +899,11 @@ namespace Creator
     public string version = "2";
     public int key = 0;
     public string name = string.Empty;
+    public Class_Setting ClassSetting = new();
     public List<Lesson> Lessons = new();
     public Page Quizzes_Menu = new();
     public List<Quiz> Quizzes = new();
+
     [JsonIgnore] public Quiz_Result last_quiz_result = null;
     public Class()
     {
@@ -953,6 +954,27 @@ namespace Creator
         key = Guid.NewGuid().GetHashCode();
       }
     }
+    public class Class_Setting
+    {
+      public int Key = 0;
+      public List<BackgroundData> Quiz_Background_Info = new List<BackgroundData>();
+
+      public Class_Setting()
+      {
+        Key = Guid.NewGuid().GetHashCode();
+      }
+      public virtual string To_Text() { return string.Empty; }
+
+      public class BackgroundData
+      {
+        public string Name;
+        public int FileSize;
+        public string Supebase_URL;
+        public string OpenAI_FildId;
+        
+      }
+    }
+
   }
   public struct ELEMENTS
   {
@@ -971,4 +993,5 @@ namespace Creator
     public static GameObject SYSTEM_QUIZ_ANSWERS => Resources.Load<GameObject>("Prefabs/Elements_Page/SYSTEM_QUIZ_ANSWERS");
     public static GameObject SYSTEM_QUIZZES_MENU => Resources.Load<GameObject>("Prefabs/Elements_Page/SYSTEM_QUIZZES_MENU");
   }
+
 }

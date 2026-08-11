@@ -77,6 +77,7 @@ public class UIToolsLeft
         button_tab_pages.SetSkinByName("on");
         elements.Quit();
         pages.Start();
+
         break;
     }
     Update_All();
@@ -102,6 +103,8 @@ public class UIToolsLeft
       public static GameObject QUIZ_PAGE_ANSWERS => Resources.Load<GameObject>("Prefabs/Elements_ToolsLeft_Pages/QUIZ_PAGE_ANSWERS");
       public static GameObject QUIZ_PAGE_MENU => Resources.Load<GameObject>("Prefabs/Elements_ToolsLeft_Pages/QUIZ_PAGE_MENU");
     }
+    ButtonC btn_setting_upload_background;
+
     public void Awake()
     {
       scroll_rect = transform.GetComponent<ScrollRect>();
@@ -189,6 +192,19 @@ public class UIToolsLeft
           UITooltips.GUI_001.AddListener(tooltip_data);
         }
       }
+      //setting
+      {
+        btn_setting_upload_background = scroll_rect.content.Find("setting_upload_background").GetComponent<ButtonC>();
+        btn_setting_upload_background.onClick.AddListener(() =>
+        {
+          ManagerApp.Clear_All_Selected();
+          btn_setting_upload_background.SetSkinByName("selected");
+          UIScene.Instance.quiz_setting.Show(SETTING_MODE.UPLOAD_BACKGROUND);
+          ManagerApp.Select_Page(null);
+          ManagerApp.Select_Lesson(null);
+          Update_All();
+        });
+      }
     }
     public void Start()
     {
@@ -200,6 +216,8 @@ public class UIToolsLeft
     }
     public void Update_All()
     {
+      UIScene.Instance.page.transform.gameObject.SetActive(ManagerApp.page_selected != null || ManagerApp.lesson_selected != null);
+      UIScene.Instance.quiz_setting.transform.gameObject.SetActive(ManagerApp.setting_selected != null);
       // lessons
       {
         var parent_lessons = scroll_rect.content.Find("lessons");
@@ -475,6 +493,7 @@ public class UIToolsLeft
           // events
           {
             var button = trfm_inst.GetComponent<ButtonC>();
+
             button.SetSkinByName(
               ManagerApp.page_selected == class_current.Quizzes_Menu
               ? "selected"
@@ -748,8 +767,25 @@ public class UIToolsLeft
           }
         }
       }
+      //setting
+      {
+        bool is_upload = ManagerApp.setting_selected is UI_UploadBackgroundInfo;
+        btn_setting_upload_background.SetSkinByName(is_upload
+            ? "selected"
+            : "default"
+        );
+        if (!is_upload)
+        {
+          UIScene.Instance.quiz_setting.Quit();
+        }
+        else
+        {
+
+        }
+      }
     }
   }
+
   [Serializable]
   public class UIElements
   {

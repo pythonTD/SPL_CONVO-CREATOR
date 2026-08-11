@@ -10,6 +10,8 @@ public class UIScene : MonoBehaviour
   public UIPopup_Input popup_input = new();
   public UIColorPicker color_picker = new();
   public UITooltips tooltips = new();
+  public UISetting quiz_setting = new();
+
   private void Awake()
   {
     Instance = this;
@@ -20,6 +22,7 @@ public class UIScene : MonoBehaviour
     popup_input.Awake();
     color_picker.Awake();
     page.Awake();
+    quiz_setting.Awake();
   }
   private void Start()
   {

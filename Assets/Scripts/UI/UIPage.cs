@@ -154,7 +154,7 @@ public class UIPage
                   Update_All();
                   break;
                 }
-             
+
               case Creator.Element.TYPE.GENERAL_WARNING:
                 {
                   var sibling_index = predict_closest_trfm.GetSiblingIndex();
@@ -311,6 +311,11 @@ public class UIPage
   public void Update_All()
   {
     var list_elements = ManagerApp.page_selected?.elements;
+    if (ManagerApp.lesson_selected == null && ManagerApp.page_selected == null)
+    {
+      transform.gameObject.SetActive(false);
+      return;
+    }
     if (ManagerApp.lesson_selected != null)
     {
       transform.Find("name").GetComponent<TMP_Text>().text =
@@ -676,7 +681,7 @@ public class UIPage
               trfm_inst.gameObject.SetActive(true);
               trfm_inst.name = element_base.key.ToString();
               element.Insert_In_Page(trfm_inst);
-              
+
               var button = trfm_inst.GetComponent<ButtonC>();
               button.onClick.AddListener(() =>
               {
@@ -831,5 +836,9 @@ public class UIPage
         }
       }
     }
+  }
+  public void Hide()
+  {
+
   }
 }

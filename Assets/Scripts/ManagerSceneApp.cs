@@ -7,6 +7,7 @@ public class ManagerSceneApp : MonoBehaviour
   public new Camera camera = null;
   public Canvas canvas_001 = null;
   public Canvas canvas_002 = null;
+  public Canvas canvas_003 = null;
   private List<RaycastResult> raycast_results = new();
   private bool camera_is_dragging = false;
   private Vector3 camera_drag_origin = default;
@@ -51,8 +52,8 @@ public class ManagerSceneApp : MonoBehaviour
         void deselect_element()
         {
           ManagerApp.Clear_Element_Selected();
-          UIScene.Instance.page.Update_All();
-          UIScene.Instance.tools_right.Update_All();
+          if (UIScene.Instance.page != null) { UIScene.Instance.page.Update_All(); }
+          if (UIScene.Instance.tools_right != null) { UIScene.Instance.tools_right.Update_All(); }
         }
       }
     }
